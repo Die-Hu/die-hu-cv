@@ -1,10 +1,10 @@
 # die-hu-cv — Die (Diane) Hu · Personal Academic CV Website
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-die--hu.github.io%2Fdie--hu--cv-1B6CA8?style=flat-square&logo=github)](https://die-hu.github.io/die-hu-cv/)
-[![HTML5](https://img.shields.io/badge/Built%20With-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![Built With HTML5](https://img.shields.io/badge/Built%20With-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/-Vanilla%20JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Status](https://img.shields.io/badge/Status-Active%20Development-7B9E87?style=flat-square)](https://github.com/Die-Hu/die-hu-cv)
+[![Vanilla JS](https://img.shields.io/badge/-Vanilla%20JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Status](https://img.shields.io/badge/Status-Active%20Development-D4845A?style=flat-square)](https://github.com/Die-Hu/die-hu-cv)
 
 Personal academic CV website for **Die (Diane) Hu**, PhD Candidate in Geographic Information Science & Cartography at UC Santa Barbara's GeoTrans Lab. Built for job hunting, academic networking, and personal branding toward careers at tech companies, national labs, and research institutions.
 
