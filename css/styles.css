@@ -1008,6 +1008,34 @@ button {
   background: var(--color-bg);
 }
 
+/* Narrative prose block above the interest cards */
+.interests__narrative {
+  max-width: 780px;
+  margin: var(--space-8) 0 var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-10);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.interests__narrative p {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.interests__narrative em {
+  font-style: italic;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
 .interests__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
