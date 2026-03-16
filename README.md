@@ -6,352 +6,432 @@
 [![Vanilla JS](https://img.shields.io/badge/-Vanilla%20JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-D4845A?style=flat-square)](https://github.com/Die-Hu/die-hu-cv)
 
-Personal academic CV website for **Die (Diane) Hu**, PhD Candidate in Geographic Information Science & Cartography at UC Santa Barbara's GeoTrans Lab. Built for job hunting, academic networking, and personal branding toward careers at tech companies, national labs, and research institutions.
+---
+
+## Live Demo
+
+**URL:** https://die-hu.github.io/die-hu-cv/
+
+### Visual Overview
+
+The site is a single-page application with a full-height hero section at the top. The hero displays Diane's name and title in a two-column layout: a text column on the left (name, pronouns, institution, a tagline typed character-by-character via a typewriter animation) and a circular profile photo placeholder on the right. The hero background is `#F8F6F2` warm off-white with four slow-moving semi-transparent Bezier curves drawn on a Canvas element, evoking topographic contour lines in muted academic blue, terracotta, and ecological green.
+
+Scrolling down, each section is separated by subtle SVG wave dividers. The **About** section uses a two-column layout with narrative paragraphs on the left and animated statistics counters on the right. The **Research** section features a horizontal four-node timeline visualization showing the research evolution from Tourism Geography through Ecological Planning and GIS to GeoAI and Human Mobility. Below it, six research interest cards are arranged in a responsive grid.
+
+The **Projects** section displays cards in a responsive grid with a filter bar at the top (All / GeoAI / Remote Sensing / GIS / Ecology). Each project card has a colored left-border accent keyed to its primary category. The **Publications** section uses a two-tab switcher (Journal / Conference), with each entry formatted in academic citation style. The **Skills** section renders badges in three visual tiers: filled pills (Tier 1 core skills), outlined badges (Tier 2 supporting skills), and dashed-border badges (Tier 3 emerging skills).
+
+Navigation is a sticky bar at 68px height that transitions from transparent over the hero to a solid white background with shadow once scrolled past 60% of the hero height. On viewports 767px and narrower, it collapses into a hamburger menu with an animated X transition.
 
 ---
 
-## 🌐 Live Demo
+## About the Project
 
-**→ [die-hu.github.io/die-hu-cv](https://die-hu.github.io/die-hu-cv/)**
+This is the personal academic CV website for **Die (Diane) Hu** (胡蝶, She/Her), PhD Candidate in Geographic Information Science and Cartography at the **GeoTrans Lab, UC Santa Barbara**, advised by Prof. Konstantinos (Kostas) Goulias. The site serves as her primary professional online presence for academic career development, job applications (targeting geospatial technology companies, national laboratories, and government agencies), and conference networking.
 
-### Page Overview
-The website is a single-page application with 11 sections navigable via sticky top nav:
+**Why this site was built:**
+Diane's career trajectory spans five institutions across two countries — Huaqiao University, China University of Geosciences (Wuhan), UNC Charlotte, Florida State University, and UC Santa Barbara. A static PDF CV cannot convey the intentional arc of that progression: from tourism geography to ecological spatial modeling to GIS engineering to GeoAI and human mobility research. A personal website allows her to present that evolution as a growth narrative rather than a list of dates, to surface federally-funded project deliverables with proper context ($404K NCDOT, $49K USDA), and to demonstrate geospatial literacy through the visual design itself.
 
-| Section | ID | Description |
+**Target audience:** Recruiters and hiring managers at geospatial technology companies (Google Maps, Uber, Waymo, Esri, Palantir), national laboratories (Oak Ridge, Lawrence Berkeley), federal agencies (FHWA, USDOT, USGS), and academic search committees.
+
+**Why Vanilla HTML/CSS/JS (not React or Vue):**
+A personal CV website has no dynamic data requirements, no component reuse at scale, and no state management complexity. A framework would add build tooling, a `node_modules` directory, and deployment complexity with zero functional benefit. Vanilla HTML renders directly in any browser, loads instantly, deploys to GitHub Pages with a single `git push`, and requires no compilation step. The zero-dependency constraint also means the site will continue to work correctly years from now without dependency rot.
+
+---
+
+## Features — Currently Implemented
+
+### Content Sections (11 total)
+
+| Section | HTML `id` | Description |
 |---|---|---|
-| Hero | `#hero` | Name, typewriter tagline, animated contour canvas background |
-| About | `#about` | Personal narrative, 4 stats, research evolution timeline (4 nodes) |
-| Research | `#interests` | 6 research interest cards with icons |
-| Projects | `#projects` | 5 featured project cards with category filter |
-| Publications | `#publications` | Journal / Conference tab switcher |
-| Teaching | `#teaching` | 4 course cards |
-| Skills | `#skills` | Three-tier pill badge system |
-| Awards | `#awards` | Timeline of honors (2017–2026) |
-| Code | `#code` | 3 GitHub open-source repo cards |
-| Contact | `#contact` | Contact info + static form |
+| Hero | `#hero` | Name, pronouns, title, affiliation, animated tagline, CTA buttons (View Research, Download CV), Canvas background animation |
+| About | `#about` | Three-paragraph narrative biography, animated stats counters |
+| Research | `#interests` | Four-node research evolution timeline + six research interest cards in a responsive grid |
+| Projects | `#projects` | 14 projects total (5 featured + 9 additional); filterable card grid with colored left-border accents by category |
+| Publications | `#publications` | Journal tab (1 entry) + Conference tab (6 entries); academic citation formatting |
+| Teaching | `#teaching` | Four teaching appointments (institution, course, role, term) |
+| Skills | `#skills` | Three-tier badge system; programming and tools sub-sections |
+| Awards | `#awards` | Nine honors and awards in reverse chronological order |
+| Code | `#code` | Three featured GitHub repository cards |
+| Contact | `#contact` | Static contact form (client-side validation only) + direct contact details |
+| Footer | — | Dynamic copyright year, social links |
+
+### Interactions and Animations
+
+- **Typewriter animation** — The Hero tagline ("Mapping Human Movement. Modeling Urban Futures.") is typed character-by-character at 60ms/character with a 500ms initial delay, then a CSS blinking cursor. Implemented in `initTypewriter()` in `main.js`.
+
+- **Hero background Canvas animation** — Four Bezier curves animate slowly across the full-height hero using `requestAnimationFrame`. Each curve has independent speed, phase offset, and amplitude. Colors: primary blue `rgba(27,108,168,0.18)`, muted blue `rgba(27,108,168,0.12)`, accent terracotta `rgba(212,132,90,0.10)`, earth green `rgba(123,158,135,0.10)`. Respects `prefers-reduced-motion`. Implemented in `initHeroContourCanvas()`.
+
+- **Scroll reveal (IntersectionObserver)** — All major content elements carry `data-aos` and optional `data-aos-delay` attributes. An `IntersectionObserver` with `threshold: 0.15` adds `.visible` to trigger CSS fade-up transitions. Each element fires only once. Implemented in `initScrollReveal()`.
+
+- **Research evolution timeline** — A horizontal four-node visualization: Tourism Geography (2016–2020) → Ecological Spatial Planning (2020–2023) → GIS Engineering (2024–2025) → GeoAI & Human Mobility (2025–present). Implemented in pure HTML/CSS.
+
+- **Project filter** — Filter buttons (All, GeoAI, Remote Sensing, GIS, Ecology) show/hide `.project-card` elements by matching `data-category` attribute. Show/hide uses `opacity` and `transform` CSS transitions, followed by `display:none` via `transitionend` event. Implemented in `initProjectFilter()`.
+
+- **Project card colored left border** — Each card's `data-primary-category` attribute drives a colored `border-left` via CSS attribute selectors: blue for GeoAI/Mobility, terracotta for Remote Sensing, green for Ecology/Land Use.
+
+- **Publications tab system** — Two tabs ("Journal Articles", "Conference Papers") switch visible panels with fade transitions. Default active tab is "Conference". Implemented in `initPublicationTabs()`.
+
+- **Count-up animation** — Stats counters (`data-count` + optional `data-suffix`) animate from 0 to target value over 1500ms using a quadratic ease-out function. Supports decimal values. Triggered once by `IntersectionObserver`. Implemented in `initStatsCounter()`.
+
+- **Three-tier skill badges** — Tier 1 (8 skills): filled pill, `--color-primary-light` background. Tier 2 (8 skills): outlined badge, `--color-earth-light` background. Tier 3 (5 skills): dashed border, `--color-surface-alt` background.
+
+- **SVG wave section dividers** — Inline SVG `<path>` wave shapes between sections soften section boundaries.
+
+- **Sticky navigation with scroll state** — Nav becomes `.scrolled` (white background, box-shadow) after scrolling past 60% of hero height. Active link state tracked by `IntersectionObserver` across 9 sections with `-68px 0px -40% 0px` rootMargin. Implemented in `initNavActiveState()`.
+
+- **Mobile hamburger menu** — Three-bar icon toggles a slide-down mobile nav. Closes on outside click, on any nav link click, and animates to X shape when open. Uses CSS class toggling and `transitionend` event for cleanup. Implemented in `initNav()`.
+
+- **Back-to-top button** — Appears when `scrollY > 400px`. Smooth scroll with native `scrollBehavior` API; manual cubic ease-out fallback for Safari.
+
+- **Smooth scroll** — All `a[href^="#"]` anchors use native smooth scroll with a `-68px` nav-height offset; cubic ease-in-out polyfill for older Safari. Implemented in `initSmoothScroll()`.
+
+- **Contact form validation** — Client-side only. Validates name (non-empty), email (non-empty + regex pattern), and message (non-empty). Shows inline error messages with `role="alert"`. On valid submit: resets form and displays a success message for 8 seconds. Implemented in `initContactForm()`.
+
+- **Dynamic copyright year** — Footer year set to `new Date().getFullYear()` at runtime.
+
+### Accessibility and Standards
+
+- Semantic HTML5 elements (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
+- ARIA labels on interactive elements (hamburger: `aria-expanded`, mobile menu: `aria-hidden`)
+- `role="alert"` and `role="status"` on dynamic form feedback
+- `aria-hidden="true"` on decorative elements (typewriter cursor, Canvas element)
+- Focus management preserved through menu open/close
+- `prefers-reduced-motion` support: Canvas animation disabled, CSS transitions shortened via media query
+- Print stylesheet: hides nav, hero animation, buttons; adjusts typography for paper output
+- iOS Safari: `100svh` for full-height hero, `font-size: 16px` on form inputs to prevent auto-zoom
 
 ---
 
-## 👤 About Diane
+## Technology Stack
 
-Die (Diane) Hu is a PhD student (2025–2029 est.) in the Geography Department at UC Santa Barbara, advised by Prof. Konstantinos (Kostas) Goulias at the [GeoTrans Lab](https://geotrans.geog.ucsb.edu/). Her research bridges **human mobility**, **GeoAI**, and **urban systems** to make cities more accessible and equitable.
+### Frontend
 
-- **Education path**: Huaqiao University (B.S. Tourism/Geography, 2020) → China University of Geosciences Wuhan (M.S. Land Resource Management, 2023) → UNC Charlotte (PhD coursework, 2024–2025) → Florida State University (exchange, Spring 2025) → **UC Santa Barbara** (PhD, 2025–)
-- **Research tagline**: *"Mapping Human Movement. Modeling Urban Futures."*
-- **Target audience for this site**: Tech companies (Google Maps, Uber, Waymo, Esri, Palantir), national labs (Oak Ridge, Lawrence Berkeley), government agencies (FHWA, USDOT, EPA), and academic positions
+| Layer | Technology | Notes |
+|---|---|---|
+| Markup | HTML5 (Semantic, ARIA) | Single `index.html`, 1,251 lines |
+| Styles | CSS3 (Custom Properties, Grid, Flexbox, Animations) | `styles.css`, 3,315 lines |
+| Behavior | Vanilla JavaScript ES6+ | `main.js` 675 lines, `content.js` 812 lines |
 
----
+### External Resources (CDN only — no npm, no build step)
 
-## ✅ Features (Currently Implemented)
+| Resource | Version / Weights | Purpose |
+|---|---|---|
+| Google Fonts — DM Sans | 400, 500, 600, 700 | Headings, UI labels, navigation |
+| Google Fonts — Source Serif 4 | 400, 600 (normal + italic) | Body text, paragraphs |
+| Font Awesome Free | 6.5.1 | Icons (social, UI, research area icons) |
 
-### Visuals & Animation
-- **Hero canvas animation** — 4 slow-moving Bézier curves simulating map contour lines/trajectories, drawn via `requestAnimationFrame` using a `<canvas>` element; respects `prefers-reduced-motion`
-- **Typewriter effect** — Hero tagline types out at 60ms/character with blinking cursor (CSS `@keyframes`)
-- **Scroll reveal** — Custom `IntersectionObserver` implementation adding `.visible` class to `[data-aos]` elements; no external library
-- **Count-up animation** — Stats numbers animate from 0 to target (supports numeric suffix like `14+`) using quadratic ease-out
-- **Section wave dividers** — SVG `<path>` wave shapes between Hero→About and GitHub→Contact sections
-- **Project card hover** — Left-border colored accent expands to subtle background gradient on hover
+> **Note:** JetBrains Mono is referenced in `styles.css` as `--font-mono` but is **not** currently loaded in the HTML `<link>` tag. Monospace text falls back to the system monospace stack until this is corrected. See Known Limitations.
 
-### Interactive Components
-- **Project category filter** — Filter buttons toggle `data-category` matching with 150ms fade transition
-- **Publications tab** — Journal / Conference switcher with `aria-selected` management
-- **Mobile hamburger menu** — Animated 3-bar → X transition, `max-height` slide-down drawer, closes on outside click or nav link click
-- **Back-to-top button** — Appears after 400px scroll with smooth animation
-- **Smooth scroll** — Native CSS + JS fallback with `NAV_HEIGHT` offset correction (Safari compatible)
-- **Nav active state** — `IntersectionObserver` highlights active section link; tracks all 9 sections including `#code`, `#skills`, `#awards`
-- **Sticky nav** — Adds `.scrolled` class (backdrop-blur + shadow) after hero scroll threshold
+No jQuery. No React. No Vue. No Bootstrap. No GSAP.
 
-### Content Sections
-- **Research Evolution Timeline** — Horizontal 4-node timeline (Tourism 2016 → Ecology 2020 → GIS 2024 → GeoAI 2025), vertical on mobile
-- **Three-tier skills system** — Tier 1 (large filled pills), Tier 2 (medium outlined), Tier 3 (small dashed border)
-- **GitHub Open Source section** — Cards for `awesome-giser`, `Global-AI-Acceptance-Index`, `MBTIearth` with topics, badges, star counts
-- **Project category badges** — Right-corner color-coded badges matching left-border accent per `data-primary-category`
-- **Publication color-coding** — `pub-item--conference` (accent orange border) / `pub-item--forthcoming` (earth green border)
+### Development Tools
 
-### Accessibility & Responsiveness
-- Semantic HTML5 (`<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`)
-- Full `aria-*` attributes, `role`, `aria-label`, `aria-expanded`, `aria-hidden`
-- Focus management on mobile menu
-- Three breakpoints: **1024px** (tablet), **767px** (mobile), **390px** (ultra-small)
-- iOS Safari fixes: `100svh` hero height, `font-size: 16px` on inputs (prevents zoom), `-webkit-overflow-scrolling: touch`
-- `@media (hover: none)` — touch-specific active states (no hover side effects on mobile)
-- Print stylesheet (hides nav, back-to-top, contact form; adjusts typography for paper)
-
----
-
-## 🛠 Technology Stack
-
-### Frontend (Zero dependencies)
-| Layer | Technology |
+| Tool | Purpose |
 |---|---|
-| Markup | HTML5 — semantic, ARIA-compliant |
-| Styles | CSS3 — Custom Properties, Grid, Flexbox, Animations, Clip-path |
-| Scripts | Vanilla JavaScript ES6+ — no frameworks, no jQuery |
-
-### External Resources (CDN, no npm install required)
-```html
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700
-             &family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600
-             &display=swap" rel="stylesheet">
-
-<!-- Icons -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-```
-
-**Font roles:**
-- `DM Sans` — headings, UI labels, nav
-- `Source Serif 4` — body text, quotes (humanist warmth)
-- `JetBrains Mono` — code elements, repo names, skill tags *(⚠ not yet in `<link>` tag — see Known Limitations)*
-
-### Development Environment
-- **Local preview**: Python HTTP server (`python3 -m http.server 8899`)
-- **Version control**: Git + GitHub Pages
-- **AI assistance**: Claude Code (Anthropic) with specialized multi-agent workflows (see §AI-Assisted Development)
+| Python 3 HTTP Server | Local preview (`python3 -m http.server 8899`) |
+| Claude Code (Anthropic) | AI-assisted planning, design, and development |
+| Git | Version control |
+| GitHub Pages | Static hosting and deployment |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 die-hu-cv/
-│
-├── index.html              # Single-page app, ~1,250 lines
-│                           # 11 sections, semantic HTML5
-│
+├── index.html              # Single-page application, 1,251 lines
+│                           # 11 content sections + nav + footer
 ├── css/
-│   └── styles.css          # ~3,300 lines, organized in 20+ labeled sections:
+│   └── styles.css          # 3,315 lines, 20+ named sections:
 │                           #   1. CSS Custom Properties (:root tokens)
 │                           #   2. Reset & Base
 │                           #   3. Layout & Container
 │                           #   4. Navigation (desktop + mobile drawer)
 │                           #   5. Buttons
 │                           #   6. Section Shared Styles
-│                           #   7. Hero Section (canvas, typewriter, badges)
-│                           #   8. About Section (grid, stats, quote, timeline)
+│                           #   7. Hero (canvas, typewriter, badges)
+│                           #   8. About (stats, timeline)
 │                           #   9. Research Interests
 │                           #  10. Projects (filter, cards, category system)
 │                           #  11. Publications (tabs, items, badges)
 │                           #  12. Teaching
 │                           #  13. Skills
-│                           #  13b. GitHub / Open Source
+│                           #  13b. GitHub / Open Source (Code section)
 │                           #  14. Contact
 │                           #  15. Footer
 │                           #  16. Back-to-top
 │                           #  17. Scroll Reveal Animations
-│                           #  18. Tablet (<1024px)
-│                           #  19. Mobile (<767px)
-│                           #  20. Extra-small (<390px)
-│                           #  20a. Touch / hover:none
+│                           #  18. Tablet (max-width: 1024px)
+│                           #  19. Mobile (max-width: 767px)
+│                           #  20. Ultra-small (max-width: 390px)
 │                           #  21. Print
-│
 ├── js/
-│   ├── main.js             # ~670 lines, 10 interactive modules:
-│   │                       #   initNav(), initTypewriter(), initScrollReveal()
-│   │                       #   initProjectFilter(), initPublicationTabs()
-│   │                       #   initContactForm(), initStatsCounter()
-│   │                       #   initSmoothScroll(), initBackToTop()
-│   │                       #   initNavActiveState(), initHeroContourCanvas()
-│   │
-│   └── content.js          # ~810 lines — structured content data object
-│                           #   window.DIANE = { meta, hero, about, education,
-│                           #     researchInterests, featuredProjects, allProjects,
-│                           #     publications, teaching, awards, skills,
-│                           #     service, contact }
-│
+│   ├── main.js             # 675 lines — 11 interactive modules:
+│   │                       #   initNav, initTypewriter, initScrollReveal,
+│   │                       #   initProjectFilter, initPublicationTabs,
+│   │                       #   initContactForm, initStatsCounter,
+│   │                       #   initSmoothScroll, initBackToTop,
+│   │                       #   initNavActiveState, initHeroContourCanvas
+│   └── content.js          # 812 lines — structured content data object
+│                           #   (window.DIANE) with 13 data keys:
+│                           #   meta, hero, about, education,
+│                           #   researchInterests, featuredProjects,
+│                           #   allProjects, publications, teaching,
+│                           #   awards, skills, service, contact
 ├── assets/
-│   ├── Diana_Hu_CV.pdf     # ⚠ PLACEHOLDER — CV PDF not yet added
-│   └── images/             # Profile photo and project images (empty)
-│
-├── DESIGN-SPEC.md          # Complete design system specification (~65KB):
-│                           #   color tokens, typography scale, spacing,
-│                           #   breakpoints, component specs, animation params
-│
-├── .gitignore
+│   ├── Diana_Hu_CV.pdf     # PLACEHOLDER — CV PDF not yet added
+│   └── images/             # Profile photo directory (currently empty)
+├── DESIGN-SPEC.md          # Complete design system specification
+│                           # Color tokens, typography scale, spacing,
+│                           # breakpoints, component behavior, animation params
+├── LICENSE                 # MIT License
 └── README.md               # This file
 ```
 
 ---
 
-## 🎨 Design System
+## Design System
 
 ### Color Palette
 
+All colors are defined as CSS Custom Properties in `:root` in `styles.css`.
+
 | Token | Value | Usage |
 |---|---|---|
-| `--color-primary` | `#1B6CA8` | Nav, buttons, links, borders, section labels |
-| `--color-primary-dark` | `#134e7a` | Hover states, contact section background |
-| `--color-primary-light` | `#e8f2fb` | Hover backgrounds, icon containers |
-| `--color-accent` | `#D4845A` | Tagline, conference pub borders, badges, warm accents |
-| `--color-accent-dark` | `#b86b40` | Accent hover states |
-| `--color-earth` | `#7B9E87` | Ecology-category accents, forthcoming pub borders |
+| `--color-primary` | `#1B6CA8` | Academic blue — CTAs, headings accent, nav active state, timeline nodes |
+| `--color-primary-dark` | `#134e7a` | Hover state for primary elements, Contact section background |
+| `--color-primary-light` | `#e8f2fb` | Tier 1 skill badge backgrounds, icon containers |
+| `--color-accent` | `#D4845A` | Warm terracotta — tagline, Remote Sensing card borders, secondary accents |
+| `--color-accent-dark` | `#b86b40` | Hover state for accent elements |
+| `--color-accent-light` | `#fdf0e8` | Accent tint backgrounds |
+| `--color-earth` | `#7B9E87` | Ecological green — Ecology/Land Use card borders |
+| `--color-earth-light` | `#edf4ef` | Tier 2 skill badge backgrounds |
 | `--color-bg` | `#F8F6F2` | Page background (warm off-white) |
-| `--color-surface` | `#FFFFFF` | Cards, nav |
-| `--color-text` | `#2C2C2C` | Primary text |
-| `--color-text-secondary` | `#5A5A5A` | Subtitles, metadata |
-| `--color-text-muted` | `#888888` | Labels, captions |
+| `--color-surface` | `#FFFFFF` | Card surfaces, nav background (scrolled state) |
+| `--color-surface-alt` | `#F2F0EC` | Alternating section backgrounds, Tier 3 badge backgrounds |
+| `--color-text` | `#2C2C2C` | Primary body text |
+| `--color-text-secondary` | `#5A5A5A` | Subheadings, metadata |
+| `--color-text-muted` | `#888888` | Captions, timestamps |
+| `--color-border` | `#E0DDD8` | Card and section borders |
+| `--color-border-light` | `#EDE9E4` | Subtle dividers |
 
-### Typography Scale
+### Typography
 
-| Token | Size | Usage |
-|---|---|---|
-| `--text-xs` | 0.75rem | Labels, captions, badges |
-| `--text-sm` | 0.875rem | Card descriptions, meta |
-| `--text-base` | 1rem | Body text |
-| `--text-lg` | 1.125rem | Lead paragraphs |
-| `--text-xl` | 1.25rem | Card titles |
-| `--text-2xl` | 1.5rem | Section subtitles |
-| `--text-3xl` | 1.875rem | Section titles (mobile) |
-| `--text-4xl`–`7xl` | 2.25–4.5rem | Hero name, display text |
+| Token | Family | Weights Loaded | Role |
+|---|---|---|---|
+| `--font-heading` | DM Sans | 400, 500, 600, 700 | All headings, nav links, buttons, badges |
+| `--font-body` | Source Serif 4 | 400, 600 (normal + italic) | Body paragraphs, publication citations |
+| `--font-mono` | JetBrains Mono | not yet loaded (see Known Limitations) | Code snippets, monospace text |
+
+**Font size scale** (`--text-xs` through `--text-7xl`):
+0.75rem / 0.875rem / 1rem / 1.125rem / 1.25rem / 1.5rem / 1.875rem / 2.25rem / 3rem / 3.75rem / 4.5rem
+
+**Line height tokens:** `--leading-relaxed: 1.7` (body text), `--leading-snug: 1.35` (headings, badges)
 
 ### Spacing Scale
-8px base grid: `--space-1` (2px) through `--space-24` (96px)
+
+8px base grid. Token range: `--space-1` (0.25rem / 4px) through `--space-32` (8rem / 128px).
+
+| Token | Value | Common usage |
+|---|---|---|
+| `--space-4` | 1rem (16px) | Default padding unit |
+| `--space-6` | 1.5rem (24px) | Container side padding |
+| `--space-8` | 2rem (32px) | Card internal padding, grid gaps |
+| `--space-16` | 4rem (64px) | Section vertical padding (desktop) |
+| `--space-24` | 6rem (96px) | Hero bottom padding |
 
 ### Responsive Breakpoints
-| Breakpoint | Width | Changes |
+
+| Breakpoint | Condition | Description |
 |---|---|---|
-| Default | > 1024px | Desktop — full 2-col layouts |
-| Tablet | ≤ 1024px | 2-col about, 2-col repo grid, reduced padding |
-| Mobile | ≤ 767px | 1-col everything, hamburger nav, touch targets 44px |
-| Ultra-small | ≤ 390px | Further font reduction, single-col interests |
+| Desktop | > 1024px | Two-column layouts, full horizontal navigation |
+| Tablet | max-width: 1024px | Adjusted grid columns, reduced font sizes |
+| Mobile | max-width: 767px | Single-column layouts, hamburger menu, stacked hero |
+| Ultra-small | max-width: 390px | Further padding and font-size reduction for small phones |
+
+### Additional Tokens
+
+| Category | Tokens |
+|---|---|
+| Border radius | `--radius-sm: 4px`, `--radius-md: 8px`, `--radius-lg: 12px`, `--radius-xl: 16px`, `--radius-full: 9999px` |
+| Shadows | `--shadow-sm` through `--shadow-xl` (four levels) |
+| Transitions | `--transition-fast: 150ms ease`, `--transition-base: 250ms ease`, `--transition-slow: 400ms ease` |
+| Layout | `--nav-height: 68px`, `--container-max: 1200px` |
 
 ---
 
-## 🚀 Getting Started
+## Getting Started — Local Development
 
-### Local Development
+No build step required. The project runs directly from the filesystem via any static HTTP server.
+
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/Die-Hu/die-hu-cv.git
 cd die-hu-cv
 
-# Start local server (Python 3)
+# 2. Start a local static server
 python3 -m http.server 8899
 
-# Open in browser
-open http://localhost:8899
+# 3. Open in browser
+# http://localhost:8899
 ```
 
-> **Note**: Must be served via HTTP (not `file://`) due to browser CORS restrictions on local JS module loading.
+> **Why a server and not `file://`?**
+> Browsers restrict certain behaviors (font loading, CORS, some module patterns) when opening HTML directly from the filesystem. A local HTTP server guarantees behavior identical to the GitHub Pages deployment.
 
-### Editing Content
-Most visible content is structured in `js/content.js` as a `window.DIANE` object. Edit that file to update text content without touching HTML structure.
-
-For structural changes (new sections, layout modifications), edit `index.html` directly. Design token changes (colors, fonts, spacing) live at the top of `css/styles.css` in the `:root` block.
+**Requirements:** Python 3, which is pre-installed on macOS and most Linux distributions. No npm, no Node.js, no compilation step of any kind.
 
 ---
 
-## ⚠️ Known Limitations
+## Current Status and Known Limitations
 
-The following issues are documented openly. All are fixable and on the roadmap:
+All known gaps and limitations in the current codebase are listed here without omission.
 
-| Issue | Severity | Notes |
+| Issue | Severity | Detail |
 |---|---|---|
-| Contact form is static | Medium | Submitting does nothing; form resets and shows fake success. Email directly: `diehu@ucsb.edu` |
-| Profile photo missing | High | `assets/images/` is empty; About section shows placeholder icon |
-| CV PDF missing | High | `assets/Diana_Hu_CV.pdf` is a placeholder; Download CV button 404s |
-| Google Scholar link placeholder | Medium | Points to `scholar.google.com` homepage, not Diane's profile |
-| ORCID link placeholder | Medium | Points to `orcid.org` homepage |
-| JetBrains Mono not loaded | Low | Referenced in CSS (`--font-mono`) but not in HTML `<link>` tag; falls back to system monospace |
-| Education section missing | Low | Degree history is embedded in About text, not a scannable table |
-| Skills/Awards not in nav | Low | These sections exist but are only reachable by scrolling |
+| **Profile photo missing** | High | `assets/images/` is empty. The Hero `<img>` in `index.html` references `assets/img/diane-hu.jpg` while `content.js` uses `assets/img/diane-hu.jpg`. A placeholder renders in the browser. |
+| **CV PDF missing** | High | `assets/Diana_Hu_CV.pdf` does not exist on disk. The "Download CV" CTA in the Hero section will return a 404. |
+| **Contact form has no backend** | High | Form submission is validated client-side and resets with a fake success message — no email is sent. Reach Diane directly at **diehu@ucsb.edu**. |
+| **JetBrains Mono not loaded** | Medium | `--font-mono: 'JetBrains Mono', monospace` is defined in `styles.css` and referenced in `DESIGN-SPEC.md`, but the Google Fonts `<link>` tag in `index.html` does not include it. Monospace elements render in the system fallback font. |
+| **Google Scholar link is a placeholder** | Medium | `contact.googleScholar` in `content.js` is an empty string. The Scholar icon in the Contact section links nowhere. |
+| **ORCID link is a placeholder** | Medium | No ORCID value is set in `content.js`. |
+| **GitHub profile link is a placeholder** | Medium | `contact.github` in `content.js` is an empty string. |
+| **Code section repo links are placeholders** | Medium | The three featured repository cards in the Code section link to `#`. Real repository URLs must be supplied. |
+| **Favicon is commented out** | Low | `<link rel="icon">` in `<head>` is commented out. Browsers display a blank tab icon. |
+| **`siteUrl` meta field is empty** | Low | `DIANE.meta.siteUrl` in `content.js` is an empty string. OG tags do not include the canonical URL. |
+| **`content.js` data not wired to DOM** | Low | `content.js` defines `window.DIANE` as a structured data object, but `index.html` hard-codes all content directly in HTML markup. The two are maintained separately and will drift. |
+| **No Education section rendered** | Low | The `education` array exists in `content.js` (5 degree entries) but there is no dedicated Education section in `index.html`. Degree history appears only in About narrative text. |
+| **Skills and Awards not in navigation** | Low | Both sections exist in the page but are not linked from the desktop nav bar. They are only reachable by scrolling. |
 
 ---
 
-## 🗺 Roadmap
+## Roadmap
 
-### 🔴 High Priority (Next 1–3 Months)
+### High Priority (Next 1–3 months)
 
-- [ ] **Add profile photo** — Replace `<div class="about__photo-placeholder">` with real photo
-- [ ] **Upload CV PDF** — Add `assets/Diana_Hu_CV.pdf`; test download button
-- [ ] **Fix Google Scholar link** — Update `href` to `https://scholar.google.com/citations?user=[ID]`
-- [ ] **Fix ORCID link** — Update `href` to `https://orcid.org/[ID]`
-- [ ] **Add JetBrains Mono** — Add to Google Fonts `<link>` tag in `<head>`
-- [ ] **Real contact form** — Integrate [Formspree](https://formspree.io) or [Netlify Forms](https://docs.netlify.com/forms/setup/)
-- [ ] **Add favicon** — Create `assets/favicon.ico` / `.png` using Diane's initials or a small map pin icon
+- [ ] Add profile photo — add photograph to `assets/images/` and update the `<img>` `src` in the Hero section
+- [ ] Upload actual CV PDF to `assets/Diana_Hu_CV.pdf`
+- [ ] Add JetBrains Mono to the Google Fonts `<link>` tag in `index.html`
+- [ ] Set real Google Scholar profile URL (pattern: `scholar.google.com/citations?user=...`)
+- [ ] Set ORCID profile URL
+- [ ] Set GitHub profile URL in `content.js` `contact.github`
+- [ ] Add real GitHub repository URLs to the Code section cards
+- [ ] Add favicon file and uncomment the `<link rel="icon">` tag in `<head>`
+- [ ] Implement a working contact form backend (Formspree or Netlify Forms — no server required)
 
-### 🟡 Medium Priority (3–6 Months)
+### Medium Priority (3–6 months)
 
-- [ ] **Education section** — Dedicated section with degree table (Huaqiao → CUG-Wuhan → UNCC → FSU → UCSB)
-- [ ] **Add Skills/Awards to navigation** — Currently scroll-only orphan sections
-- [ ] **Narrative project descriptions** — Rewrite project descriptions to be human-centered, not CV-speak (per INFP review)
-- [ ] **Field research photos** — Add photos from typhoon volunteering (Xiamen), Yunnan Shidian fieldwork, Ezhou land survey
-- [ ] **Interactive research field map** — Map of all field sites (Guizhou, Wuhan, Charlotte NC, Dominican Republic, Santa Barbara CA)
-- [ ] **About section improvements** — Add father-worked-away childhood backstory that connects to mobility research theme
-- [ ] **Dark mode toggle** — CSS `prefers-color-scheme` + manual toggle button
-- [ ] **`<meta>` social card image** — Add `og:image` for LinkedIn/Twitter link previews
+- [ ] Add a dedicated Education section that renders the `education` array from `content.js` (5 degrees, full degree history)
+- [ ] Wire `content.js` data to DOM so content is maintained in one place (currently HTML and JS data are out of sync)
+- [ ] Add Skills and Awards links to the main desktop navigation
+- [ ] Expand project cards to link to full project detail pages or extended descriptions
+- [ ] Rewrite project descriptions in a more narrative, human-centered register (current text is accurate but reads as a technical report rather than a portfolio)
+- [ ] Add field research photography (typhoon volunteer work at Xiamen, Yunnan Shidian one-month residency, Ezhou field survey)
+- [ ] Interactive research field sites map showing: Guizhou, Wuhan, Charlotte NC, Dominican Republic, Santa Barbara CA
+- [ ] Add `og:image` social card image for LinkedIn and other link preview contexts
+- [ ] Dark mode toggle
+- [ ] Chinese / English language toggle (i18n)
 
-### 🟢 Long-term Vision (6+ Months)
+### Long-term Vision (6+ months)
 
-- [ ] **Blog / Research Notes** — Markdown-powered posts on spatial data science, field updates, paper summaries
-- [ ] **Interactive project embeds** — Live demos of GitHub projects (MBTIearth 3D globe, Global-AI-Acceptance-Index)
-- [ ] **Mobility visualization** — Embed actual output maps from NHTS California mobility motif analysis
-- [ ] **Conference slides archive** — PDF embeds for AAG 2026, WCTR 2026, SWAAG 2024 presentations
-- [ ] **Automated academic profile sync** — Pull publications from ORCID API, citation counts from Google Scholar
-- [ ] **i18n (Chinese / English toggle)** — Bilingual support for Chinese academic networks
-- [ ] **CV auto-generator** — Generate updated PDF CV from `content.js` data using HTML-to-PDF
-- [ ] **Analytics** — Privacy-respecting visitor analytics (Plausible or Fathom)
+- [ ] Blog / Research Notes section (spatial data science methods, conference reflections, research updates)
+- [ ] Interactive embedded project demos (MBTIearth 3D globe, Global-AI-Acceptance-Index)
+- [ ] Embedded research data visualizations (output maps from NHTS California mobility motif analysis)
+- [ ] Conference presentation archive (slides or recording embeds for AAG 2026, WCTR 2026, SWAAG 2024)
+- [ ] Automated CV sync via ORCID or Google Scholar API
+- [ ] Privacy-respecting analytics (Plausible or Fathom)
 
 ---
 
-## 🤖 AI-Assisted Development
+## AI-Assisted Development Notes
 
-This project was built using **[Claude Code](https://claude.ai/claude-code)** (Anthropic) as the primary development environment. The development process used a multi-agent architecture to ensure both technical quality and narrative authenticity:
+This project was developed using **Claude Code** (Anthropic, model: claude-sonnet-4-6). The following is an accurate account of how AI tooling participated, included here for transparency.
 
-### Agent Roles
+**What Claude Code did:**
 
-| Agent Type | Responsibility |
+- Conducted a structured analysis of Diane's full academic and professional profile from CV source materials, LinkedIn information, and personal statement documents
+- Produced `DESIGN-SPEC.md` — the complete design system specification (color palette, typography scale, component behavior definitions, animation parameters)
+- Wrote the full HTML structure (`index.html`, 1,251 lines), CSS system (`styles.css`, 3,315 lines), JavaScript interaction modules (`main.js`, 675 lines), and content data object (`content.js`, 812 lines)
+- Implemented all technical features including the Canvas contour animation, IntersectionObserver scroll reveal, count-up animation, project filter, and publication tab system
+- Drafted all biographical and research narrative text in `content.js` (About paragraphs, project descriptions, research interest descriptions) based on source CV materials
+- Produced this README
+
+**Multi-agent architecture used during development:**
+
+The development session employed parallel agents in distinct analytical roles:
+
+| Agent Role | Responsibility |
 |---|---|
-| **INFP** | Narrative authenticity, emotional resonance, personal story arc, ensuring Diane's ENFJ voice |
-| **INTP** | Technical consistency audit, logic/architecture analysis, identifying CSS-HTML mismatches |
-| **INTJ** | Strategic positioning, brand differentiation, target audience prioritization |
-| **ISTJ** | Documentation, code organization, technical specifications, roadmap tracking |
-| **Web Viz Team** | UI implementation — canvas animation, timeline visualization, skills system, wave transitions |
-| **GitHub Integration** | Open-source section HTML/CSS, repo card system |
-| **Mobile Optimization** | Touch targets, iOS Safari fixes, 390px breakpoint, `hover: none` states |
+| INFP persona | Narrative authenticity, emotional resonance, personal story arc, ensuring Diane's ENFJ voice comes through |
+| INTP persona | Technical consistency audit, logic and architecture analysis, identifying mismatches between CSS, HTML, and JS |
+| INTJ persona | Strategic positioning, brand differentiation, target audience prioritization, one-sentence brand definition |
+| ISTJ persona | Documentation, code organization, technical specifications, this README |
+| Web Visualization Team | UI component implementation: Canvas animation, timeline, skills tier system, wave transitions |
+| GitHub Integration | Code section HTML/CSS, repository card system |
+| Mobile Optimization | Touch targets, iOS Safari fixes, 390px breakpoint, `hover:none` media query states |
 
-### What AI Did vs. What Humans Decided
-- **AI implemented**: All HTML structure, CSS styling, JavaScript interactions, content writing
-- **Human decided**: Which projects to feature, narrative priorities, tone of personal story, visual direction preferences
-- **All content verified**: Research descriptions, publication data, and biographical information reviewed against Diane's actual CV materials
+**Human oversight:**
 
-### Development Principles Applied
-- Zero external JS dependencies (for long-term maintainability)
-- CSS Custom Properties throughout (single source of truth for design tokens)
-- BEM-inspired class naming convention
-- `IntersectionObserver` for all scroll-triggered effects (no AOS library)
-- Accessibility-first (WCAG 2.1 AA target)
+All design decisions, content accuracy, and final code were reviewed and approved by Leo (project owner and collaborator). All factual content about Diane's research, publications, and background was sourced from materials she provided. No biographical details were invented.
 
 ---
 
-## 📄 License
+## About Diane
 
-| Item | License |
+**Die (Diane) Hu** (She/Her) is a PhD Candidate in Geographic Information Science and Cartography at the University of California, Santa Barbara, working in the **GeoTrans Lab** under Prof. Konstantinos (Kostas) Goulias. Her research focuses on human mobility and travel behavior, spatiotemporal modeling, GeoAI, and urban accessibility — with a consistent equity orientation across all these themes.
+
+Before UCSB, she worked as a Graduate Research Assistant at UNC Charlotte's Center for Applied GIScience (CAGIS), contributing to two federally funded projects: a $404K NC Department of Transportation infrastructure study (DeepPipe) and a $49K USDA Forest Service mangrove inventory in the Dominican Republic. She holds an M.S. in Land Resource Management from China University of Geosciences (Wuhan) and a B.S. in Human Geography and Urban-Rural Planning from Huaqiao University, where she published a peer-reviewed journal article as an undergraduate.
+
+Her current dissertation work uses the 2017 NHTS California subsample to develop a distance-informed framework linking daily mobility motifs to destination-based accessibility across urban, suburban, and rural geographies. She presented this work as an oral presentation at the AAG Annual Meeting in Minneapolis (March 2026). A co-authored paper on household VMT and vehicle fleet structures has been accepted for presentation at WCTR 2026 in Toulouse, France.
+
+She grew up in Guizhou Province, China.
+
+Contact: **diehu@ucsb.edu** | Santa Barbara, California | [LinkedIn](https://www.linkedin.com/in/die-diane-hu-370007270)
+
+---
+
+## License and Credits
+
+### Code License — MIT
+
+```
+MIT License
+
+Copyright (c) 2026 Die (Diane) Hu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### Content Copyright
+
+All CV content, research descriptions, biographical text, and academic work descriptions are **© Die (Diane) Hu. All Rights Reserved.** They may not be reproduced without permission.
+
+### Credits
+
+| Item | Credit |
 |---|---|
-| **Website code** (HTML, CSS, JS structure) | [MIT License](LICENSE) |
-| **Personal content** (CV data, research descriptions, biographical text, photos) | © Die (Diane) Hu — All Rights Reserved |
+| Website design and development | Built with [Claude Code](https://claude.com/claude-code) (Anthropic) |
+| Project supervision | Leo (project owner) |
+| Fonts | [DM Sans](https://fonts.google.com/specimen/DM+Sans) and [Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4) via Google Fonts (SIL Open Font License) |
+| Icons | [Font Awesome Free](https://fontawesome.com) 6.5.1 (CC BY 4.0 for icons, SIL OFL for fonts) |
 
 ---
 
-## 🙏 Credits
-
-- Website designed and developed with **[Claude Code](https://claude.ai/claude-code)** by Anthropic
-- Supervised and directed by Leo (project manager / collaborator)
-- Profile content © Die (Diane) Hu
-- Icons: [Font Awesome 6 Free](https://fontawesome.com)
-- Fonts: [Google Fonts](https://fonts.google.com) (DM Sans, Source Serif 4)
-
----
-
-## 📬 Contact
-
-**Die (Diane) Hu**
-PhD Candidate, Geography · UC Santa Barbara
-📧 [diehu@ucsb.edu](mailto:diehu@ucsb.edu)
-🔗 [LinkedIn](https://www.linkedin.com/in/die-diane-hu-370007270)
-🐙 [GitHub](https://github.com/Die-Hu)
-
----
-
-*Last updated: March 2026 · Built with ♥ for spatial justice*
+*Last updated: March 2026*
