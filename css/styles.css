@@ -1835,6 +1835,27 @@ button {
   pointer-events: none;
 }
 
+/* Card preview thumbnail */
+.repo-card__preview {
+  margin: calc(var(--space-5) * -1) calc(var(--space-5) * -1) var(--space-4);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg);
+}
+
+.repo-card__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.repo-card:hover .repo-card__preview img {
+  transform: scale(1.03);
+}
+
 /* Card header */
 .repo-card__header {
   display: flex;
