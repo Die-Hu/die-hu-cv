@@ -529,11 +529,21 @@ button {
    ============================================================ */
 .hero {
   min-height: 100vh;
-  background: var(--color-bg);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
+  /* UCSB diorama blended background */
+  background:
+    linear-gradient(
+      105deg,
+      rgba(248, 246, 242, 1.00)  0%,
+      rgba(248, 246, 242, 0.97) 38%,
+      rgba(248, 246, 242, 0.80) 55%,
+      rgba(248, 246, 242, 0.30) 75%,
+      rgba(248, 246, 242, 0.08) 100%
+    ),
+    url('../assets/images/ucsb-diorama-v2.png') right center / cover no-repeat;
 }
 
 .hero::before {
@@ -541,11 +551,10 @@ button {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(27, 108, 168, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 132, 90, 0.06) 0%, transparent 50%),
-    linear-gradient(rgba(27, 108, 168, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 108, 168, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    radial-gradient(circle at 20% 50%, rgba(27, 108, 168, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(27, 108, 168, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 108, 168, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
   pointer-events: none;
 }
 
@@ -843,20 +852,107 @@ button {
 }
 
 .about__photo {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
-.about__photo img {
+/* UCSB diorama card */
+.about__diorama {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.about__diorama img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.about__diorama:hover img {
+  transform: scale(1.03);
+}
+
+.about__diorama-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(to top, rgba(20,40,60,0.75) 0%, transparent 100%);
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.about__diorama-caption i {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+}
+
+/* Collapsible story */
+.about__story {
+  margin-top: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.about__story-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-alt);
+  list-style: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  user-select: none;
+}
+
+.about__story-toggle::-webkit-details-marker { display: none; }
+
+.about__story-toggle:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.about__story-chevron {
+  margin-left: auto;
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.about__story[open] .about__story-chevron {
+  transform: rotate(180deg);
+}
+
+.about__story-body {
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about__story-body p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
 }
 
 .about__photo-caption {
@@ -1874,12 +1970,109 @@ button {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Legacy grid — replaced by centered layout */
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-16);
   position: relative;
   z-index: 1;
+}
+
+/* New centered display-only contact layout */
+.contact__centered {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.contact__subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.7;
+}
+
+.contact__primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.btn--light {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.btn--light:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-lg);
+  min-height: 52px;
+}
+
+.contact__location {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.contact__location i {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+}
+
+/* Social cards grid */
+.contact__social-grid {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact__social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: var(--radius-lg);
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  min-width: 90px;
+}
+
+.contact__social-card i {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contact__social-card:hover {
+  background: rgba(255, 255, 255, 0.20);
+  border-color: rgba(255, 255, 255, 0.40);
+  color: #ffffff;
+  transform: translateY(-3px);
 }
 
 .contact__info {
