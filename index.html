@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Die (Diane) Hu — PhD Candidate in Geography at UC Santa Barbara. Geospatial data scientist bridging human mobility, GeoAI, and urban systems to make cities more accessible, equitable, and intelligently navigated." />
+  <meta property="og:title" content="Die (Diane) Hu · PhD Candidate, UCSB Geography" />
+  <meta property="og:description" content="Mapping Human Movement. Modeling Urban Futures. Geospatial data scientist at UCSB GeoTrans Lab." />
+  <meta property="og:type" content="website" />
+  <meta name="author" content="Die (Diane) Hu" />
+  <title>Die (Diane) Hu · PhD Candidate, UCSB Geography</title>
+
+  <!-- Favicon placeholder -->
+  <!-- <link rel="icon" type="image/png" href="assets/favicon.png" /> -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome 6 Free -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__brand" aria-label="Die (Diane) Hu — Home">
+        Die (Diane) Hu
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#about"        class="nav__link">About</a></li>
+        <li><a href="#interests"    class="nav__link">Research</a></li>
+        <li><a href="#projects"     class="nav__link">Projects</a></li>
+        <li><a href="#publications" class="nav__link">Publications</a></li>
+        <li><a href="#teaching"     class="nav__link">Teaching</a></li>
+        <li><a href="#code"         class="nav__link">Code</a></li>
+        <li><a href="#contact"      class="nav__link">Contact</a></li>
+      </ul>
+
+      <a
+        href="assets/Diana_Hu_CV.pdf"
+        class="btn btn--primary nav__cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Download CV (PDF)"
+      >
+        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+        Download CV
+      </a>
+
+      <button
+        class="nav__hamburger"
+        id="navToggle"
+        aria-expanded="false"
+        aria-controls="navMenu"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu" id="navMenu" aria-hidden="true">
+      <ul class="nav__mobile-links" role="list">
+        <li><a href="#about"        class="nav__link">About</a></li>
+        <li><a href="#interests"    class="nav__link">Research</a></li>
+        <li><a href="#projects"     class="nav__link">Projects</a></li>
+        <li><a href="#publications" class="nav__link">Publications</a></li>
+        <li><a href="#teaching"     class="nav__link">Teaching</a></li>
+        <li><a href="#code"         class="nav__link">Code</a></li>
+        <li><a href="#contact"      class="nav__link">Contact</a></li>
+        <li>
+          <a
+            href="assets/Diana_Hu_CV.pdf"
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+            Download CV
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-label="Hero section">
+      <div class="hero__bg" aria-hidden="true">
+        <!-- TASK 2: Animated contour curves canvas -->
+        <canvas class="hero__contour-canvas" id="heroContourCanvas" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="container hero__content">
+        <p class="hero__eyebrow">
+          PhD Candidate &middot; Geography &middot; UC Santa Barbara
+        </p>
+
+        <h1 class="hero__name">Die (Diane) Hu</h1>
+
+        <p class="hero__tagline" id="heroTagline" aria-label="Mapping Human Movement. Modeling Urban Futures.">
+          <span class="hero__tagline-text" id="taglineText"></span><span class="hero__tagline-cursor" aria-hidden="true">|</span>
+        </p>
+
+        <p class="hero__desc">
+          Geospatial data scientist bridging human mobility, GeoAI, and urban systems to make cities more accessible, equitable, and intelligently navigated.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="#interests" class="btn btn--primary">
+            <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+            View Research
+          </a>
+          <a
+            href="assets/Diana_Hu_CV.pdf"
+            class="btn btn--secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+            Download CV
+          </a>
+        </div>
+
+        <div class="hero__badges" role="list" aria-label="Upcoming conferences and affiliations">
+          <span class="tag" role="listitem">
+            <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+            AAG 2026 &middot; Minneapolis
+          </span>
+          <span class="tag" role="listitem">
+            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+            WCTR 2026 &middot; Toulouse
+          </span>
+          <span class="tag" role="listitem">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            UCSB Geography
+          </span>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <a href="#about" class="hero__scroll-link" tabindex="-1">
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+
+      <!-- TASK 5: Wave transition hero→about -->
+      <div class="section-wave section-wave--hero-to-about" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section class="about" id="about" data-aos="fade-up" aria-labelledby="about-title">
+      <div class="container about__grid">
+
+        <!-- Text side -->
+        <div class="about__text">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title" id="about-title">Rooted in the Mountains,<br />Mapping the World</h2>
+
+          <p>
+            Growing up in rural Guizhou, China, I was first appointed class leader at age six — not because anyone asked if I wanted to, but because someone had to. That sense of stewardship has shaped everything since. When I volunteered for typhoon cleanup at my university in Xiamen and stood among uprooted trees and damaged streets for the first time, I felt the raw tension between nature's force and the fragile city we call home. That moment became a compass.
+          </p>
+
+          <p>
+            My research journey has taken me from tourism geography to ecological network construction, from land-use spatial planning across China's provinces to analyzing human mobility patterns with federal survey data in California. What looks like a winding path is, in fact, a deepening question: how does spatial structure shape outcomes — for people, for ecosystems, for the communities we build? I don't see ecology and transportation as separate domains. I see them as different scales of the same problem.
+          </p>
+
+          <p>
+            Today, as a PhD researcher in the GeoTrans Lab at UC Santa Barbara under Prof. Konstantinos Goulias, I apply geospatial data science and spatiotemporal modeling to understand how people move through — and are excluded from — urban systems. I am driven by the conviction that better data, honestly analyzed, can help cities become more accessible and more humane. I also believe that the best research is done in teams, and I carry that belief into every collaboration, mentorship, and classroom I enter.
+          </p>
+
+          <blockquote class="about__quote">
+            <p>"I don't want human beings to pollute beautiful garden cities. I don't want haze to cover the blue sky! I am on the right track to protect mother earth!"</p>
+            <cite>— Personal Statement</cite>
+          </blockquote>
+
+          <div class="about__stats" role="list" aria-label="Key statistics">
+            <div class="about__stat" role="listitem">
+              <strong data-count="14" data-suffix="+">14+</strong>
+              <span>Research Projects</span>
+            </div>
+            <div class="about__stat" role="listitem">
+              <strong data-count="6" data-suffix="">6</strong>
+              <span>Publications</span>
+            </div>
+            <div class="about__stat" role="listitem">
+              <strong data-count="4" data-suffix="">4</strong>
+              <span>Countries / Regions</span>
+            </div>
+            <div class="about__stat" role="listitem">
+              <strong data-count="4.0" data-suffix="">4.0</strong>
+              <span>GPA at UCSB</span>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               TASK 1: Research Evolution Timeline (added below stats)
+          ============================================================ -->
+          <div class="research-timeline" aria-label="Research evolution timeline">
+            <div class="research-timeline__header">
+              <span class="research-timeline__label">Research Evolution</span>
+            </div>
+            <div class="research-timeline__track">
+
+              <div class="rt-node" data-phase="tourism">
+                <div class="rt-node__dot">
+                  <i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i>
+                </div>
+                <div class="rt-node__connector" aria-hidden="true"></div>
+                <div class="rt-node__content">
+                  <span class="rt-node__period">2016–2020</span>
+                  <h4 class="rt-node__title">Tourism Geography</h4>
+                  <div class="rt-node__tags">
+                    <span>Travel Safety</span>
+                    <span>Destination</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rt-node" data-phase="ecology">
+                <div class="rt-node__dot">
+                  <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                </div>
+                <div class="rt-node__connector" aria-hidden="true"></div>
+                <div class="rt-node__content">
+                  <span class="rt-node__period">2020–2023</span>
+                  <h4 class="rt-node__title">Ecology &amp; Land Systems</h4>
+                  <div class="rt-node__tags">
+                    <span>Land Use</span>
+                    <span>Ecological Networks</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rt-node" data-phase="gis">
+                <div class="rt-node__dot">
+                  <i class="fa-solid fa-map" aria-hidden="true"></i>
+                </div>
+                <div class="rt-node__connector" aria-hidden="true"></div>
+                <div class="rt-node__content">
+                  <span class="rt-node__period">2024–2025</span>
+                  <h4 class="rt-node__title">GIS &amp; Transportation</h4>
+                  <div class="rt-node__tags">
+                    <span>Remote Sensing</span>
+                    <span>Urban Infra</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rt-node rt-node--active" data-phase="geoai">
+                <div class="rt-node__dot">
+                  <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                </div>
+                <div class="rt-node__content">
+                  <span class="rt-node__period">2025–Present</span>
+                  <h4 class="rt-node__title">GeoAI &amp; Human Mobility</h4>
+                  <div class="rt-node__tags">
+                    <span>Mobility Motifs</span>
+                    <span>Accessibility</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- /TASK 1 -->
+
+        </div>
+
+        <!-- Photo side -->
+        <div class="about__photo" aria-hidden="true">
+          <div class="about__photo-placeholder">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <p>Photo coming soon</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESEARCH INTERESTS
+    ============================================================ -->
+    <section class="interests" id="interests" data-aos="fade-up" aria-labelledby="interests-title">
+      <div class="container">
+        <span class="section-label">Research Interests</span>
+        <h2 class="section-title" id="interests-title">What Drives My Work</h2>
+
+        <div class="interests__grid">
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-route"></i>
+            </div>
+            <h3 class="interest-card__title">Human Mobility &amp; Travel Behavior</h3>
+            <p class="interest-card__desc">
+              Analyzing how people structure their daily movements and what shapes destination choices across urban and rural contexts.
+            </p>
+          </article>
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h3 class="interest-card__title">GeoAI &amp; Spatiotemporal Modeling</h3>
+            <p class="interest-card__desc">
+              Applying machine learning and AI to geographic data for pattern recognition, prediction, and planning insights.
+            </p>
+          </article>
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-city"></i>
+            </div>
+            <h3 class="interest-card__title">Urban Accessibility &amp; Equity</h3>
+            <p class="interest-card__desc">
+              Measuring who can reach what, and designing frameworks that expose and address spatial disparities.
+            </p>
+          </article>
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-car-on"></i>
+            </div>
+            <h3 class="interest-card__title">Transportation Systems Analysis</h3>
+            <p class="interest-card__desc">
+              Evaluating vehicle miles traveled, fleet structures, and modal shifts to inform sustainable transport policy.
+            </p>
+          </article>
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-satellite"></i>
+            </div>
+            <h3 class="interest-card__title">Remote Sensing &amp; Land Use</h3>
+            <p class="interest-card__desc">
+              Processing multi-source satellite imagery to track landscape change, ecological health, and infrastructure conditions.
+            </p>
+          </article>
+
+          <article class="interest-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="interest-card__icon" aria-hidden="true">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="interest-card__title">Ecological Spatial Planning</h3>
+            <p class="interest-card__desc">
+              Integrating landscape ecology with urban planning to build resilient, connected natural systems.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+    ============================================================ -->
+    <section class="projects" id="projects" data-aos="fade-up" aria-labelledby="projects-title">
+      <div class="container">
+        <span class="section-label">Selected Projects</span>
+        <h2 class="section-title" id="projects-title">Research That Moves<br />(Literally and Figuratively)</h2>
+        <p class="section-subtitle">
+          From California freeways to Dominican mangroves — my work spans scales, systems, and continents.
+        </p>
+
+        <!-- Filter -->
+        <div class="projects__filter" role="group" aria-label="Filter projects by category">
+          <button class="btn btn--ghost filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="btn btn--ghost filter-btn" data-filter="federal" aria-pressed="false">
+            <i class="fa-solid fa-landmark" aria-hidden="true"></i> Federal
+          </button>
+          <button class="btn btn--ghost filter-btn" data-filter="geoai" aria-pressed="false">
+            <i class="fa-solid fa-robot" aria-hidden="true"></i> GeoAI
+          </button>
+          <button class="btn btn--ghost filter-btn" data-filter="mobility" aria-pressed="false">
+            <i class="fa-solid fa-car" aria-hidden="true"></i> Mobility
+          </button>
+          <button class="btn btn--ghost filter-btn" data-filter="ecology" aria-pressed="false">
+            <i class="fa-solid fa-leaf" aria-hidden="true"></i> Ecology
+          </button>
+          <button class="btn btn--ghost filter-btn" data-filter="urban" aria-pressed="false">
+            <i class="fa-solid fa-building" aria-hidden="true"></i> Urban
+          </button>
+        </div>
+
+        <!-- Grid -->
+        <div class="projects__grid">
+
+          <!-- Card 1 — Featured -->
+          <!-- TASK 3: data-primary-category drives left border color & category badge -->
+          <article
+            class="project-card project-card--featured"
+            data-category="geoai mobility"
+            data-primary-category="geoai"
+            data-aos="fade-up"
+          >
+            <!-- TASK 3: Category badge (top-right) -->
+            <span class="project-card__cat-badge project-card__cat-badge--geoai" aria-label="Category: GeoAI">
+              <i class="fa-solid fa-robot" aria-hidden="true"></i> GeoAI
+            </span>
+            <div class="project-card__badge project-card__badge--featured">
+              <i class="fa-solid fa-star" aria-hidden="true"></i> Featured &middot; AAG 2026
+            </div>
+            <h3 class="project-card__title">How We Move, What We Reach: Mobility Motifs &amp; Destination Accessibility</h3>
+            <p class="project-card__meta">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              GeoTrans Lab, UCSB &middot; 2025–Present
+            </p>
+            <p class="project-card__desc">
+              Using 2017 NHTS California data, I developed a distance-informed framework that links daily mobility motifs — the structural patterns of how people sequence activities — to cumulative destination-based accessibility. By integrating activity-space features and establishment-density classifications, the work reveals how movement patterns shape who can reach what across urban, suburban, and rural geographies.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">GeoAI</span>
+              <span class="tag">Mobility</span>
+              <span class="tag">NHTS</span>
+              <span class="tag">Accessibility</span>
+              <span class="tag">AAG 2026</span>
+            </div>
+            <a href="#publications" class="project-card__link">
+              View Related Publication <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="project-card"
+            data-category="mobility"
+            data-primary-category="mobility"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <span class="project-card__cat-badge project-card__cat-badge--mobility" aria-label="Category: Mobility">
+              <i class="fa-solid fa-car" aria-hidden="true"></i> Mobility
+            </span>
+            <div class="project-card__badge">
+              WCTR 2026 &middot; Accepted
+            </div>
+            <h3 class="project-card__title">VMT and Household Vehicle Fleet Structures</h3>
+            <p class="project-card__meta">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              GeoTrans Lab, UCSB &middot; 2025–Present
+            </p>
+            <p class="project-card__desc">
+              Co-authored investigation into correlations between annual vehicle miles traveled (VMT) and household fleet composition and fuel types using paired 2017 and 2022 NHTS data. Accepted for presentation and publication at the World Conference on Transport Research, Toulouse, France.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Transportation</span>
+              <span class="tag">Sustainability</span>
+              <span class="tag">NHTS</span>
+              <span class="tag">WCTR</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="project-card"
+            data-category="federal ecology"
+            data-primary-category="ecology"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <span class="project-card__cat-badge project-card__cat-badge--ecology" aria-label="Category: Ecology">
+              <i class="fa-solid fa-leaf" aria-hidden="true"></i> Ecology
+            </span>
+            <div class="project-card__badge">
+              $49,773 &middot; USDA Forest Service
+            </div>
+            <h3 class="project-card__title">Mangrove Inventory &amp; Spatio-Temporal Analysis, Dominican Republic</h3>
+            <p class="project-card__meta">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              CAGIS, UNC Charlotte &middot; 2024–2025
+            </p>
+            <p class="project-card__desc">
+              Processed multi-source geospatial data to map mangrove area and canopy height distributions across the Montecristi Wetlands. Designed spatial optimization models for inventory plot allocation and analyzed 10-year mangrove decline (2013–2023). Presented at SWAAG/AGX 2024.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">Conservation</span>
+              <span class="tag">Federal</span>
+              <span class="tag">International</span>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article
+            class="project-card"
+            data-category="federal urban"
+            data-primary-category="gis"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <span class="project-card__cat-badge project-card__cat-badge--gis" aria-label="Category: GIS">
+              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> GIS
+            </span>
+            <div class="project-card__badge">
+              $404,403 &middot; NCDOT
+            </div>
+            <h3 class="project-card__title">DeepPipe: Spatially Explicit Deep Learning for Urban Stormwater Infrastructure</h3>
+            <p class="project-card__meta">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              CAGIS, UNC Charlotte &middot; 2024–2025
+            </p>
+            <p class="project-card__desc">
+              Created soil maps from the gSSURGO database to support underground pipe service life evaluation across Charlotte. Improved the Pipe Assessment and Selection Software (PASS) by converting legacy VBA code to Python, enabling scalable and reproducible stormwater infrastructure prediction.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">GIS</span>
+              <span class="tag">Python</span>
+              <span class="tag">Infrastructure</span>
+              <span class="tag">Federal</span>
+              <span class="tag">Urban</span>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article
+            class="project-card"
+            data-category="urban"
+            data-primary-category="gis"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <span class="project-card__cat-badge project-card__cat-badge--gis" aria-label="Category: GIS">
+              <i class="fa-solid fa-city" aria-hidden="true"></i> Urban
+            </span>
+            <div class="project-card__badge">
+              Community Impact
+            </div>
+            <h3 class="project-card__title">Charlotte Atlas of Climate Inequality &amp; Community Resilience</h3>
+            <p class="project-card__meta">
+              <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              UNC Charlotte &middot; 2024–2025
+            </p>
+            <p class="project-card__desc">
+              Designed an interactive mapping template using Esri Experience Builder to visualize climate inequality indicators and community resilience metrics across Charlotte neighborhoods. Provided training for city partners on adding maps, updating datasets, and interpreting spatial equity indicators.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">WebGIS</span>
+              <span class="tag">Climate Equity</span>
+              <span class="tag">Urban</span>
+              <span class="tag">Community</span>
+            </div>
+          </article>
+
+        </div><!-- /.projects__grid -->
+
+        <div class="projects__more" style="text-align:center; margin-top: 2.5rem;">
+          <a href="#contact" class="btn btn--secondary">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            Inquire About All Research
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PUBLICATIONS
+    ============================================================ -->
+    <section class="publications" id="publications" data-aos="fade-up" aria-labelledby="pub-title">
+      <div class="container">
+        <span class="section-label">Publications &amp; Presentations</span>
+        <h2 class="section-title" id="pub-title">Scholarship in Motion</h2>
+
+        <!-- Tabs -->
+        <div class="pub-tabs" role="tablist" aria-label="Publication type tabs">
+          <button
+            class="pub-tab active"
+            role="tab"
+            id="tab-journal"
+            aria-selected="true"
+            aria-controls="panel-journal"
+          >
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            Journal Articles
+          </button>
+          <button
+            class="pub-tab"
+            role="tab"
+            id="tab-conference"
+            aria-selected="false"
+            aria-controls="panel-conference"
+          >
+            <i class="fa-solid fa-users" aria-hidden="true"></i>
+            Conference Papers &amp; Presentations
+          </button>
+        </div>
+
+        <!-- Journal panel -->
+        <div
+          class="pub-list"
+          id="panel-journal"
+          role="tabpanel"
+          aria-labelledby="tab-journal"
+        >
+          <article class="pub-item">
+            <div class="pub-item__badge pub-item__badge--journal">Journal &middot; 2019</div>
+            <h3 class="pub-item__title">
+              A study on the measurement of foreign tourists' sense of safety in traveling to China and strategies for improvement.
+            </h3>
+            <p class="pub-item__authors">
+              Hu, D., Zhu, Y., Lin, Y.T., et al.
+            </p>
+            <p class="pub-item__venue">
+              <em>Contemporary Tourism</em>, 2019(3): 70–75.
+            </p>
+            <p class="pub-item__year">2019</p>
+          </article>
+        </div>
+
+        <!-- Conference panel -->
+        <div
+          class="pub-list pub-list--hidden"
+          id="panel-conference"
+          role="tabpanel"
+          aria-labelledby="tab-conference"
+          hidden
+        >
+
+          <article class="pub-item pub-item--forthcoming">
+            <div class="pub-item__badge pub-item__badge--forthcoming">WCTR 2026 &middot; Forthcoming</div>
+            <h3 class="pub-item__title">
+              What is the relationship between VMT and household vehicle fleet structures and fuel types?
+            </h3>
+            <p class="pub-item__authors">
+              Goulias, K.G., Shi, H., Hu, D., Wu, Y., Lian, M.
+            </p>
+            <p class="pub-item__venue">
+              <em>World Conference on Transport Research (WCTR 2026)</em>, Toulouse, France.
+            </p>
+            <p class="pub-item__year">2026</p>
+          </article>
+
+          <article class="pub-item pub-item--conference">
+            <div class="pub-item__badge pub-item__badge--oral">AAG 2026 &middot; Oral Presentation</div>
+            <h3 class="pub-item__title">
+              How We Move, What We Reach: Distance-Informed Daily Mobility Motifs and Destination Accessibility in California.
+            </h3>
+            <p class="pub-item__authors">
+              Hu, D., Goulias, K.
+            </p>
+            <p class="pub-item__venue">
+              <em>AAG Annual Meeting</em>, Minneapolis, MN.
+            </p>
+            <p class="pub-item__year">2026</p>
+          </article>
+
+          <article class="pub-item pub-item--conference">
+            <div class="pub-item__badge pub-item__badge--conference">SWAAG 2024</div>
+            <h3 class="pub-item__title">
+              Spatio-Temporal Analysis of Mangrove Decline in the Montecristi Wetlands, Dominican Republic (2013–2023).
+            </h3>
+            <p class="pub-item__authors">
+              Hu, D., Tang, W.
+            </p>
+            <p class="pub-item__venue">
+              <em>SWAAG/AGX</em>, San Marcos, TX.
+            </p>
+            <p class="pub-item__year">2024</p>
+          </article>
+
+          <article class="pub-item">
+            <div class="pub-item__badge pub-item__badge--conference">2021</div>
+            <h3 class="pub-item__title">
+              Coupled analysis of land use efficiency and ecological welfare performance in Hubei Province.
+            </h3>
+            <p class="pub-item__authors">
+              Hu, D., Gong, J.
+            </p>
+            <p class="pub-item__venue">
+              <em>32nd Graduate Sci-tech Forum</em>, China University of Geosciences.
+            </p>
+            <p class="pub-item__year">2021</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TEACHING
+    ============================================================ -->
+    <section class="teaching" id="teaching" data-aos="fade-up" aria-labelledby="teaching-title">
+      <div class="container">
+        <span class="section-label">Teaching</span>
+        <h2 class="section-title" id="teaching-title">Bridging Theory and Practice</h2>
+
+        <div class="teaching__grid">
+
+          <article class="course-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="course-card__code">GEOG 111A</div>
+            <h3 class="course-card__title">Transportation Planning and Modeling</h3>
+            <p class="course-card__meta">
+              <i class="fa-solid fa-university" aria-hidden="true"></i>
+              UC Santa Barbara &middot; Winter 2026 &middot;
+              <em>Teaching Assistant</em>
+            </p>
+            <p class="course-card__note">
+              Conducted lab sessions for spatial and transportation data analysis; guided students in R/RStudio spatial statistics.
+            </p>
+          </article>
+
+          <article class="course-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="course-card__code">GEOG 172</div>
+            <h3 class="course-card__title">Intermediate Geographic Data Analysis</h3>
+            <p class="course-card__meta">
+              <i class="fa-solid fa-university" aria-hidden="true"></i>
+              UC Santa Barbara &middot; Fall 2025 &middot;
+              <em>Teaching Assistant</em>
+            </p>
+            <p class="course-card__note">
+              Developed lab materials for spatial clustering, autocorrelation, and regression analysis.
+            </p>
+          </article>
+
+          <article class="course-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="course-card__code">GEA 1000</div>
+            <h3 class="course-card__title">World Geography</h3>
+            <p class="course-card__meta">
+              <i class="fa-solid fa-university" aria-hidden="true"></i>
+              Florida State University &middot; Spring 2025 &middot;
+              <em>Teaching Assistant</em>
+            </p>
+            <p class="course-card__note">
+              Assisted with introductory world geography course; graded assignments and supported student learning.
+            </p>
+          </article>
+
+          <article class="course-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="course-card__code">HUM GEO</div>
+            <h3 class="course-card__title">Human Geography &amp; Urban-Rural Planning</h3>
+            <p class="course-card__meta">
+              <i class="fa-solid fa-university" aria-hidden="true"></i>
+              Huaqiao University &middot; 2018–2019 &middot;
+              <em>Dept. Teaching Assistant</em>
+            </p>
+            <p class="course-card__note">
+              Collated research outcomes; designed course practical plans and assessed final assignments.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS — TASK 4: Three-tier pill badge visual system
+    ============================================================ -->
+    <section class="skills" id="skills" data-aos="fade-up" aria-labelledby="skills-title">
+      <div class="container">
+        <span class="section-label">Skills &amp; Tools</span>
+        <h2 class="section-title" id="skills-title">The Technical Toolkit</h2>
+
+        <!-- TASK 4: Tier 1 — Core skills, large filled pills -->
+        <div class="skills__tier skills__tier--1" data-aos="fade-up" data-aos-delay="50">
+          <div class="skills__tier-header">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            <span class="skills__tier-label">Core Capabilities</span>
+            <span class="skills__tier-desc">Tier 1 · Primary Expertise</span>
+          </div>
+          <div class="skills__pills" role="list" aria-label="Core skills">
+            <!-- GIS category — primary blue -->
+            <span class="skill-pill skill-pill--t1 skill-pill--gis" role="listitem">
+              <i class="fa-solid fa-map" aria-hidden="true"></i> ArcGIS
+            </span>
+            <span class="skill-pill skill-pill--t1 skill-pill--gis" role="listitem">
+              <i class="fa-solid fa-map" aria-hidden="true"></i> QGIS
+            </span>
+            <span class="skill-pill skill-pill--t1 skill-pill--gis" role="listitem">
+              <i class="fa-solid fa-satellite" aria-hidden="true"></i> Google Earth Engine
+            </span>
+            <!-- Programming — earth green -->
+            <span class="skill-pill skill-pill--t1 skill-pill--code" role="listitem">
+              <i class="fa-brands fa-python" aria-hidden="true"></i> Python
+            </span>
+            <span class="skill-pill skill-pill--t1 skill-pill--code" role="listitem">
+              <i class="fa-solid fa-code" aria-hidden="true"></i> R
+            </span>
+            <span class="skill-pill skill-pill--t1 skill-pill--code" role="listitem">
+              <i class="fa-solid fa-database" aria-hidden="true"></i> SQL
+            </span>
+            <!-- Methods — accent orange -->
+            <span class="skill-pill skill-pill--t1 skill-pill--method" role="listitem">
+              Spatial Data Integration
+            </span>
+            <span class="skill-pill skill-pill--t1 skill-pill--method" role="listitem">
+              Quantitative Methods
+            </span>
+          </div>
+        </div>
+
+        <!-- TASK 4: Tier 2 — Supporting skills, medium outlined pills -->
+        <div class="skills__tier skills__tier--2" data-aos="fade-up" data-aos-delay="100">
+          <div class="skills__tier-header">
+            <i class="fa-solid fa-wrench" aria-hidden="true"></i>
+            <span class="skills__tier-label">Supporting Tools</span>
+            <span class="skills__tier-desc">Tier 2 · Proficient</span>
+          </div>
+          <div class="skills__pills" role="list" aria-label="Supporting skills">
+            <span class="skill-pill skill-pill--t2 skill-pill--gis" role="listitem">ENVI</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--gis" role="listitem">Fragstats</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--gis" role="listitem">InVEST</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--gis" role="listitem">MSPA</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--code" role="listitem">Jupyter Notebook</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--code" role="listitem">Git</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--code" role="listitem">Linux / HPC</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--method" role="listitem">SPSS</span>
+            <span class="skill-pill skill-pill--t2 skill-pill--method" role="listitem">AutoCAD</span>
+          </div>
+        </div>
+
+        <!-- TASK 4: Tier 3 — Emerging skills, small dashed-border pills -->
+        <div class="skills__tier skills__tier--3" data-aos="fade-up" data-aos-delay="150">
+          <div class="skills__tier-header">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            <span class="skills__tier-label">Emerging &amp; Developing</span>
+            <span class="skills__tier-desc">Tier 3 · In Progress</span>
+          </div>
+          <div class="skills__pills" role="list" aria-label="Emerging skills">
+            <span class="skill-pill skill-pill--t3 skill-pill--gis" role="listitem">GeoAI</span>
+            <span class="skill-pill skill-pill--t3 skill-pill--code" role="listitem">Spatiotemporal ML</span>
+            <span class="skill-pill skill-pill--t3 skill-pill--method" role="listitem">CPLEX</span>
+            <span class="skill-pill skill-pill--t3 skill-pill--method" role="listitem">Adobe Illustrator</span>
+            <span class="skill-pill skill-pill--t3 skill-pill--method" role="listitem">Photoshop</span>
+          </div>
+        </div>
+
+        <!-- Languages & Soft Skills -->
+        <div class="skills__tier skills__tier--aux" data-aos="fade-up" data-aos-delay="200">
+          <div class="skills__tier-header">
+            <i class="fa-solid fa-language" aria-hidden="true"></i>
+            <span class="skills__tier-label">Languages</span>
+          </div>
+          <div class="skills__pills" role="list" aria-label="Languages">
+            <span class="skill-pill skill-pill--t2 skill-pill--lang" role="listitem">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i> English (Professional)
+            </span>
+            <span class="skill-pill skill-pill--t2 skill-pill--lang" role="listitem">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i> Mandarin Chinese (Native)
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- /TASK 4 -->
+
+    <!-- ============================================================
+         AWARDS / HONORS
+    ============================================================ -->
+    <section class="awards" id="awards" data-aos="fade-up" aria-labelledby="awards-title">
+      <div class="container">
+        <span class="section-label">Honors &amp; Awards</span>
+        <h2 class="section-title" id="awards-title">Recognition Along the Way</h2>
+
+        <ol class="timeline" reversed aria-label="Awards timeline">
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="50">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2026</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Dangermond Travel Award</h3>
+              <p class="timeline__subtitle">$600 &middot; UCSB Geography</p>
+            </div>
+          </li>
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2024</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Conference Travel Scholarship</h3>
+              <p class="timeline__subtitle">$1,100 &middot; UNC Charlotte</p>
+            </div>
+          </li>
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="150">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2021</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Third Prize, 32nd Scientific Paper Presentation</h3>
+              <p class="timeline__subtitle">China University of Geosciences</p>
+            </div>
+          </li>
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2020–2022</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">First-class Academic Scholarship for Graduates</h3>
+              <p class="timeline__subtitle">China University of Geosciences</p>
+            </div>
+          </li>
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="250">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2019</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Second Prize, 26th "Challenge Cup"</h3>
+              <p class="timeline__subtitle">Huaqiao University</p>
+            </div>
+          </li>
+
+          <li class="timeline__item" data-aos="fade-up" data-aos-delay="300">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__year">2017–2019</div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">National Encouragement Scholarship (3 consecutive years)</h3>
+              <p class="timeline__subtitle">Huaqiao University</p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OPEN SOURCE / CODE
+    ============================================================ -->
+    <section class="github-section" id="code" data-aos="fade-up" aria-labelledby="code-title">
+      <div class="container">
+        <span class="section-label">Open Source</span>
+        <h2 class="section-title" id="code-title">Code &amp; Community</h2>
+        <p class="section-subtitle">Building tools and curating resources for the global GIS community.</p>
+
+        <div class="repo-grid">
+
+          <!-- Repo 1: awesome-giser (FEATURED) -->
+          <article class="repo-card repo-card--featured" data-aos="fade-up" data-aos-delay="50">
+            <div class="repo-card__header">
+              <div class="repo-card__icon">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </div>
+              <div class="repo-card__meta">
+                <span class="repo-card__badge repo-card__badge--featured">★ Featured</span>
+                <span class="repo-card__stars">
+                  <i class="fas fa-star" aria-hidden="true"></i> 2
+                </span>
+              </div>
+            </div>
+            <h3 class="repo-card__name">awesome-giser</h3>
+            <p class="repo-card__desc">The most comprehensive GIS encyclopedia on GitHub — covering Data, Tools, AI Prompts, Visualization, Web Dev &amp; Academic resources for GIS professionals worldwide.</p>
+            <div class="repo-card__topics">
+              <span class="repo-topic">GIS</span>
+              <span class="repo-topic">Geospatial</span>
+              <span class="repo-topic">AI Prompts</span>
+              <span class="repo-topic">Cartography</span>
+              <span class="repo-topic">Python</span>
+              <span class="repo-topic">WebGIS</span>
+            </div>
+            <a href="https://github.com/Die-Hu/awesome-giser" target="_blank" rel="noopener noreferrer" class="repo-card__link btn btn--ghost">
+              <i class="fab fa-github" aria-hidden="true"></i> View Repository
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- Repo 2: Global-AI-Acceptance-Index -->
+          <article class="repo-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="repo-card__header">
+              <div class="repo-card__icon">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+              </div>
+              <div class="repo-card__meta">
+                <span class="repo-card__badge repo-card__badge--viz">Visualization</span>
+                <span class="repo-card__stars">
+                  <i class="fas fa-star" aria-hidden="true"></i> 1
+                </span>
+              </div>
+            </div>
+            <h3 class="repo-card__name">Global-AI-Acceptance-Index</h3>
+            <p class="repo-card__desc">Interactive 3D globe visualization of global AI acceptance across 121 countries, compiled from 46 data sources. Built with D3.js and Three.js for immersive data exploration.</p>
+            <div class="repo-card__topics">
+              <span class="repo-topic">D3.js</span>
+              <span class="repo-topic">AI Research</span>
+              <span class="repo-topic">3D Globe</span>
+              <span class="repo-topic">Interactive Map</span>
+              <span class="repo-topic">Open Data</span>
+            </div>
+            <a href="https://github.com/Die-Hu/Global-AI-Acceptance-Index" target="_blank" rel="noopener noreferrer" class="repo-card__link btn btn--ghost">
+              <i class="fab fa-github" aria-hidden="true"></i> View Repository
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- Repo 3: MBTIearth -->
+          <article class="repo-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="repo-card__header">
+              <div class="repo-card__icon">
+                <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+              </div>
+              <div class="repo-card__meta">
+                <span class="repo-card__badge repo-card__badge--fun">For Fun 🌏</span>
+                <span class="repo-card__stars">
+                  <i class="fas fa-star" aria-hidden="true"></i> 1
+                </span>
+              </div>
+            </div>
+            <h3 class="repo-card__name">MBTIearth</h3>
+            <p class="repo-card__desc">An interactive 3D globe that playfully maps MBTI personality types to countries worldwide — combining geospatial visualization with psychological data for an unexpected perspective on global culture.</p>
+            <div class="repo-card__topics">
+              <span class="repo-topic">JavaScript</span>
+              <span class="repo-topic">3D Globe</span>
+              <span class="repo-topic">Data Viz</span>
+              <span class="repo-topic">Interactive</span>
+            </div>
+            <a href="https://github.com/Die-Hu/MBTIearth" target="_blank" rel="noopener noreferrer" class="repo-card__link btn btn--ghost">
+              <i class="fab fa-github" aria-hidden="true"></i> View Repository
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </article>
+
+        </div><!-- /.repo-grid -->
+
+        <div class="github-section__cta" data-aos="fade-up">
+          <a href="https://github.com/Die-Hu" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+            <i class="fab fa-github" aria-hidden="true"></i>
+            View All on GitHub
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT — TASK 5: Wave transition from github section
+    ============================================================ -->
+    <!-- TASK 5: Wave into contact section -->
+    <div class="section-wave section-wave--to-contact" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C360,80 1080,0 1440,50 L1440,0 L0,0 Z" fill="#F8F6F2"/>
+      </svg>
+    </div>
+    <section class="contact" id="contact" data-aos="fade-up" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+
+        <!-- Info side -->
+        <div class="contact__info">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title" id="contact-title">Let's Connect</h2>
+          <p class="section-subtitle">
+            I'm always open to research collaborations, speaking invitations, and conversations about urban systems and spatial data science.
+          </p>
+
+          <ul class="contact__details" role="list">
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:diehu@ucsb.edu">diehu@ucsb.edu</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>Department of Geography, UC Santa Barbara, Goleta, CA</span>
+            </li>
+            <li>
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              <a
+                href="https://www.linkedin.com/in/die-diane-hu-370007270"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/die-diane-hu-370007270
+              </a>
+            </li>
+          </ul>
+
+          <div class="social-links" role="list" aria-label="Social media links">
+            <a
+              href="https://scholar.google.com"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="Google Scholar profile"
+            >
+              <i class="fa-brands fa-google-scholar" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://github.com/Die-Hu"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="GitHub profile"
+            >
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/die-diane-hu-370007270"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="LinkedIn profile"
+            >
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://orcid.org"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              role="listitem"
+              aria-label="ORCID profile"
+            >
+              <i class="fa-brands fa-orcid" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Form side -->
+        <div class="contact__form">
+          <form
+            id="contactForm"
+            novalidate
+            aria-label="Contact form"
+          >
+            <div class="form-group">
+              <label for="contactName">Name <span aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="contactName"
+                name="name"
+                autocomplete="name"
+                placeholder="Your full name"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Email <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="contactEmail"
+                name="email"
+                autocomplete="email"
+                placeholder="your@email.com"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input
+                type="text"
+                id="contactSubject"
+                name="subject"
+                placeholder="Research collaboration, speaking, etc."
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Message <span aria-hidden="true">*</span></label>
+              <textarea
+                id="contactMessage"
+                name="message"
+                rows="6"
+                placeholder="Tell me about your idea or question..."
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Send Message
+            </button>
+
+            <p class="form-note">
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+              This form is currently static. Please email me directly at
+              <a href="mailto:diehu@ucsb.edu">diehu@ucsb.edu</a>.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <div class="footer__top">
+        <div class="footer__identity">
+          <p class="footer__name">Die (Diane) Hu</p>
+          <p class="footer__role">PhD Candidate, Geography &middot; UC Santa Barbara</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#about"        class="footer__nav-link">About</a>
+          <a href="#interests"    class="footer__nav-link">Research</a>
+          <a href="#projects"     class="footer__nav-link">Projects</a>
+          <a href="#publications" class="footer__nav-link">Publications</a>
+          <a href="#teaching"     class="footer__nav-link">Teaching</a>
+          <a href="#code"         class="footer__nav-link">Code</a>
+          <a href="#contact"      class="footer__nav-link">Contact</a>
+        </nav>
+      </div>
+
+      <hr class="footer__divider" />
+
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          &copy; 2026 Die (Diane) Hu &middot; Made with <span aria-label="love">&#9829;</span> for spatial justice
+        </p>
+        <p class="footer__updated">Last updated: March 2026</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/content.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+
+</body>
+</html>
