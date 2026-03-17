@@ -874,11 +874,21 @@ button {
 }
 
 .about__diorama--hometown {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 10;
+}
+
+.about__diorama--hometown img {
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+
+.about__diorama--hometown:hover img {
+  filter: grayscale(0.3);
+  opacity: 1;
 }
 
 .about__diorama--ucsb {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
 }
 
 .about__diorama img {
