@@ -1266,7 +1266,7 @@ p {
 
 **3 Featured Project Cards:**
 
-**Card 1:** Mobility Motifs & Destination Accessibility
+**Card 1:** Capabilities, Constraints & Daily Activity Space
 - Funding: `UCSB GeoTrans Lab`
 - Status: `forthcoming`
 - Description: "Modeling where California households travel and why — using 2017 NHTS data and spatiotemporal motif analysis to reveal patterns of destination choice and mobility inequity."

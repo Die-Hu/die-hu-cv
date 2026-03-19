@@ -204,7 +204,7 @@ const DIANE = {
   featuredProjects: [
     {
       id: "mobility-motifs",
-      title: "Mobility Motifs & Destination Accessibility in California",
+      title: "Capabilities, Constraints, and Daily Activity Space in California",
       institution: "UCSB — GeoTrans Lab",
       period: "2025 – present",
       status: "ongoing",
@@ -520,8 +520,8 @@ const DIANE = {
         authorPosition: "first",
         year: 2026,
         title:
-          "How We Move, What We Reach: Distance-Informed Daily Mobility Motifs " +
-          "and Destination Accessibility in California",
+          "How We Move, What We Reach: Capabilities, Constraints, " +
+          "and Daily Activity Space in California",
         venue: "AAG Annual Meeting",
         location: "Minneapolis, MN",
         date: "March 2026",

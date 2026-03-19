@@ -383,7 +383,7 @@ All design decisions, content accuracy, and final code were reviewed and approve
 
 Before UCSB, she worked as a Graduate Research Assistant at UNC Charlotte's Center for Applied GIScience (CAGIS), contributing to two federally funded projects: a $404K NC Department of Transportation infrastructure study (DeepPipe) and a $49K USDA Forest Service mangrove inventory in the Dominican Republic. She holds an M.S. in Land Resource Management from China University of Geosciences (Wuhan) and a B.S. in Human Geography and Urban-Rural Planning from Huaqiao University, where she published a peer-reviewed journal article as an undergraduate.
 
-Her current dissertation work uses the 2017 NHTS California subsample to develop a distance-informed framework linking daily mobility motifs to destination-based accessibility across urban, suburban, and rural geographies. She presented this work as an oral presentation at the AAG Annual Meeting in Minneapolis (March 2026). A co-authored paper on household VMT and vehicle fleet structures has been accepted for presentation at WCTR 2026 in Toulouse, France.
+Her current dissertation work uses the 2017 NHTS California subsample (N=28,404) to develop a dwell-time-weighted Activity Space Indicator examining how capabilities, constraints, and built-environment factors shape the geographic extent of daily activities. She presented this work ("How We Move, What We Reach: Capabilities, Constraints, and Daily Activity Space in California") as an oral presentation at the AAG Annual Meeting in Minneapolis (March 2026). A co-authored paper on household VMT and vehicle fleet structures has been accepted for presentation at WCTR 2026 in Toulouse, France.
 
 She grew up in Guizhou Province, China.
 
