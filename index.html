@@ -154,17 +154,30 @@
       var input = document.getElementById('pw-input');
       var err = document.getElementById('pw-error');
 
+      var EXPECTED_HASH = '8a1b151965bffdd7b433422fee2ce4e8ee8f55c8633e9b4328f391011b6e02d6';
+
+      function sha256Hex(str) {
+        var bytes = new TextEncoder().encode(str);
+        return crypto.subtle.digest('SHA-256', bytes).then(function (buf) {
+          return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return b.toString(16).padStart(2, '0');
+          }).join('');
+        });
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (input.value === '551700') {
-          try { sessionStorage.setItem('pw-unlocked', '1'); } catch (e) {}
-          gate.parentNode.removeChild(gate);
-          document.documentElement.classList.remove('is-locked');
-        } else {
-          err.textContent = 'Incorrect password.';
-          input.value = '';
-          input.focus();
-        }
+        sha256Hex(input.value).then(function (hash) {
+          if (hash === EXPECTED_HASH) {
+            try { sessionStorage.setItem('pw-unlocked', '1'); } catch (e) {}
+            gate.parentNode.removeChild(gate);
+            document.documentElement.classList.remove('is-locked');
+          } else {
+            err.textContent = 'Incorrect password.';
+            input.value = '';
+            input.focus();
+          }
+        });
       });
     })();
   </script>
