@@ -32,8 +32,142 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Password gate styles (inline to avoid flash of unlocked content) -->
+  <style>
+    html.is-locked, html.is-locked body { overflow: hidden; }
+    html.is-locked body > *:not(#pw-gate) { visibility: hidden; }
+    #pw-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background: #F8F6F2;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #2C2C2C;
+    }
+    #pw-gate .pw-card {
+      width: min(92vw, 380px);
+      padding: 2.5rem 2rem;
+      background: #FFFFFF;
+      border: 1px solid #E0DDD8;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    #pw-gate h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    #pw-gate p {
+      margin: 0 0 1.5rem;
+      font-size: 0.9rem;
+      color: #5A5A5A;
+    }
+    #pw-gate form { display: flex; flex-direction: column; gap: 0.75rem; }
+    #pw-gate input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #2C2C2C;
+      background: #F8F6F2;
+      border: 1px solid #E0DDD8;
+      border-radius: 8px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.2em;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+    #pw-gate input[type="password"]:focus {
+      border-color: #1B6CA8;
+      background: #FFFFFF;
+    }
+    #pw-gate button {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: #FFFFFF;
+      background: #1B6CA8;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    #pw-gate button:hover { background: #134e7a; }
+    #pw-gate .pw-error {
+      min-height: 1.2em;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #b84040;
+    }
+  </style>
+  <script>
+    // Apply lock class as early as possible to prevent FOUC.
+    (function () {
+      try {
+        if (sessionStorage.getItem('pw-unlocked') === '1') return;
+      } catch (e) {}
+      document.documentElement.classList.add('is-locked');
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- ============================================================
+       PASSWORD GATE
+  ============================================================ -->
+  <div id="pw-gate" hidden>
+    <div class="pw-card">
+      <h1>Private Page</h1>
+      <p>Please enter the password to continue.</p>
+      <form id="pw-form" autocomplete="off">
+        <input
+          id="pw-input"
+          type="password"
+          inputmode="numeric"
+          autocomplete="off"
+          aria-label="Password"
+          autofocus
+        />
+        <button type="submit">Enter</button>
+        <div class="pw-error" id="pw-error" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var gate = document.getElementById('pw-gate');
+      var unlocked = false;
+      try { unlocked = sessionStorage.getItem('pw-unlocked') === '1'; } catch (e) {}
+
+      if (unlocked) {
+        gate.parentNode.removeChild(gate);
+        document.documentElement.classList.remove('is-locked');
+        return;
+      }
+
+      gate.hidden = false;
+      var form = document.getElementById('pw-form');
+      var input = document.getElementById('pw-input');
+      var err = document.getElementById('pw-error');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (input.value === '551700') {
+          try { sessionStorage.setItem('pw-unlocked', '1'); } catch (e) {}
+          gate.parentNode.removeChild(gate);
+          document.documentElement.classList.remove('is-locked');
+        } else {
+          err.textContent = 'Incorrect password.';
+          input.value = '';
+          input.focus();
+        }
+      });
+    })();
+  </script>
 
   <!-- ============================================================
        NAVIGATION
